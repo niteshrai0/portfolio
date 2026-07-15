@@ -1,4 +1,6 @@
-Nitesh Rai — Digital Portfolio
+Hi there, 
+
+I'm Nitesh Rai and this is my Digital Portfolio.
 
 This repository hosts the source code for my personal portfolio and digital home.
 
