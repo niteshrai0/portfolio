@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nitesh Rai — Product Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #111210;
+    --ink-mid: #3d3d3a;
+    --ink-light: #7a7a74;
+    --paper: #F5F3EE;
+    --paper-warm: #EDE9E0;
+    --accent: #1B4FBF;
+    --accent-light: #E8EEFB;
+    --rule: #D4D0C8;
+    --white: #FFFFFF;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(245,243,238,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--rule);
+    padding: 0 48px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.3px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-mid);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  /* LAYOUT */
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  section { padding: 96px 0; }
+
+  /* HERO */
+  #hero {
+    padding-top: 140px;
+    padding-bottom: 96px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .hero-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(52px, 8vw, 88px);
+    line-height: 1.0;
+    letter-spacing: -2px;
+    color: var(--ink);
+    margin-bottom: 28px;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-line {
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--ink-mid);
+    max-width: 580px;
+    line-height: 1.55;
+    margin-bottom: 48px;
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 40px;
+    background: var(--white);
+  }
+
+  .stat {
+    padding: 20px 24px;
+    border-right: 1px solid var(--rule);
+  }
+  .stat:last-child { border-right: none; }
+
+  .stat-number {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    color: var(--ink);
+    letter-spacing: -1px;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--ink-light);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .hero-tiles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tile {
+    display: inline-block;
+    padding: 6px 14px;
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink-mid);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+
+  .tile:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--white);
+  }
+
+  /* SECTION HEADERS */
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 56px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 32px;
+    letter-spacing: -0.5px;
+    color: var(--ink);
+  }
+
+  /* ARC */
+  #arc { background: var(--white); }
+
+  .arc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
+
+  .arc-chapter {
+    padding: 32px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    position: relative;
+  }
+
+  .chapter-period {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+  }
+
+  .chapter-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: var(--ink);
+    margin-bottom: 8px;
+    letter-spacing: -0.3px;
+  }
+
+  .chapter-company {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .chapter-body {
+    font-size: 14px;
+    color: var(--ink-mid);
+    line-height: 1.65;
+  }
+
+  .arc-close {
+    margin-top: 48px;
+    padding: 28px 32px;
+    background: var(--accent-light);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 4px 4px 0;
+  }
+
+  .arc-close-text {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--accent);
+    line-height: 1.5;
+  }
+
+  /* WORK */
+  .case-study {
+    margin-bottom: 64px;
+    padding-bottom: 64px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .case-study:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .case-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .case-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    padding: 4px 10px;
+    background: var(--accent);
+    color: var(--white);
+    border-radius: 2px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .case-category {
+    font-size: 12px;
+    color: var(--ink-light);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  .case-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    letter-spacing: -0.5px;
+    color: var(--ink);
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .case-subtitle {
+    font-size: 15px;
+    color: var(--ink-mid);
+    margin-bottom: 32px;
+    line-height: 1.5;
+  }
+
+  .case-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+
+  .case-block {
+    padding: 24px;
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+  }
+
+  .case-block-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .case-block-text {
+    font-size: 14px;
+    color: var(--ink-mid);
+    line-height: 1.6;
+  }
+
+  .case-metrics {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+  }
+
+  .metric {
+    text-align: center;
+    padding: 16px 20px;
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    min-width: 100px;
+  }
+
+  .metric-value {
+    font-family: 'DM Serif Display', serif;
+    font-size: 24px;
+    color: var(--accent);
+    letter-spacing: -0.5px;
+  }
+
+  .metric-label {
+    font-size: 11px;
+    color: var(--ink-light);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    margin-top: 2px;
+  }
+
+  .case-lesson {
+    padding: 20px 24px;
+    border-left: 3px solid var(--accent);
+    background: var(--accent-light);
+    border-radius: 0 4px 4px 0;
+  }
+
+  .case-lesson-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .case-lesson-text {
+    font-size: 14px;
+    font-style: italic;
+    color: var(--ink-mid);
+    line-height: 1.6;
+  }
+
+  /* THINKING */
+  #thinking { background: var(--white); }
+
+  .principles-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .principle {
+    padding: 28px;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    background: var(--paper);
+    transition: border-color 0.2s;
+  }
+
+  .principle:hover { border-color: var(--accent); }
+
+  .principle-number {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+  }
+
+  .principle-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    color: var(--ink);
+    margin-bottom: 10px;
+    letter-spacing: -0.3px;
+  }
+
+  .principle-body {
+    font-size: 13px;
+    color: var(--ink-mid);
+    line-height: 1.65;
+  }
+
+  /* WRITING */
+  .writing-placeholder {
+    padding: 56px;
+    border: 1px dashed var(--rule);
+    border-radius: 4px;
+    text-align: center;
+  }
+
+  .writing-placeholder-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: var(--ink-light);
+    margin-bottom: 12px;
+    font-style: italic;
+  }
+
+  .writing-placeholder-text {
+    font-size: 14px;
+    color: var(--ink-light);
+    max-width: 400px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* CONTACT */
+  #contact {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  #contact .section-title { color: var(--paper); }
+  #contact .section-label { color: var(--accent-light); }
+
+  .contact-line {
+    font-size: 18px;
+    color: var(--rule);
+    margin-bottom: 40px;
+    max-width: 500px;
+    line-height: 1.55;
+    font-weight: 300;
+  }
+
+  .contact-links {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 2px;
+    color: var(--paper);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+
+  .contact-link:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .contact-link.primary {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .open-to {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 13px;
+    color: var(--ink-light);
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.04em;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 24px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-text {
+    font-size: 12px;
+    color: var(--ink-light);
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* SCROLL REVEAL */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .container { padding: 0 20px; }
+    .hero-stats { grid-template-columns: repeat(2, 1fr); }
+    .arc-grid { grid-template-columns: 1fr; }
+    .case-grid { grid-template-columns: 1fr; }
+    .principles-grid { grid-template-columns: 1fr; }
+    .hero-name { font-size: 48px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">Nitesh Rai</a>
+  <ul class="nav-links">
+    <li><a href="#arc">The Arc</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#thinking">Thinking</a></li>
+    <li><a href="#writing">Writing</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-eyebrow">Product Manager · Bengaluru, India</div>
+    <h1 class="hero-name">Nitesh<br><em>Rai</em></h1>
+    <p class="hero-line">I build embedded products that work — for partners, for customers, and for the business simultaneously. I think in systems, build for the layer beneath the feature, and use AI to move faster and decide smarter.</p>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-number">$2M+</div>
+        <div class="stat-label">ARR Contributed</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">120+</div>
+        <div class="stat-label">API Integrations</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">25+</div>
+        <div class="stat-label">Insurance Partners</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">4+</div>
+        <div class="stat-label">Years Building</div>
+      </div>
+    </div>
+
+    <div class="hero-tiles">
+      <a class="tile" href="#work">Embedded Insurance</a>
+      <a class="tile" href="#work">API-First Platforms</a>
+      <a class="tile" href="#work">White-Label Distribution</a>
+      <a class="tile" href="#work">B2B · B2B2C · B2C</a>
+      <a class="tile" href="#work">Integration Architecture</a>
+      <a class="tile" href="#work">AI Product Development</a>
+      <a class="tile" href="#work">MENA & Africa</a>
+      <a class="tile" href="#thinking">Systems Thinking</a>
+    </div>
+  </div>
+</section>
+
+<!-- THE ARC -->
+<section id="arc">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">01</span>
+      <h2 class="section-title">The Arc</h2>
+    </div>
+
+    <div class="arc-grid">
+      <div class="arc-chapter reveal">
+        <div class="chapter-period">2021 — 2023</div>
+        <h3 class="chapter-title">Learning How Businesses Actually Work</h3>
+        <div class="chapter-company">Awign Enterprises</div>
+        <p class="chapter-body">Joined as an APM and spent the first months not in front of a laptop — but in the field. Understanding operations from the ground up. How work actually gets done. How people actually use products. Rotated across every business function — ops, sales, marketing, product, engineering, support — before earning a seat at the core product table. Scaled a key enterprise account 10x in six months. Then worked directly alongside the CPO and CTO on platform strategy and roadmap. The real MBA.</p>
+      </div>
+
+      <div class="arc-chapter reveal">
+        <div class="chapter-period">2023 — Present</div>
+        <h3 class="chapter-title">Building the Infrastructure Layer</h3>
+        <div class="chapter-company">Riskcovry</div>
+        <p class="chapter-body">Joined an API-first embedded insurance company and took ownership of two platform product lines — LendPro (B2B) and Retail Pro (B2B2C). The work wasn't about features. It was about the systems that make features possible. Integration frameworks. AI recommendation engines. Distribution architecture across Health, Life, Motor, and Commercial Vehicles. A platform that went from fragile to scalable to profitable — contributing to $2M+ ARR along the way.</p>
+      </div>
+    </div>
+
+    <div class="arc-close reveal">
+      <p class="arc-close-text">"Each chapter taught me to see further upstream — from fixing what's broken, to building what scales, to understanding why some products and businesses simply work and others don't."</p>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">02</span>
+      <h2 class="section-title">Work</h2>
+    </div>
+
+    <!-- CASE STUDY 1 — LENDPRO -->
+    <div class="case-study reveal">
+      <div class="case-meta">
+        <span class="case-tag">B2B</span>
+        <span class="case-category">Embedded Insurance · API Platform · Integration Architecture</span>
+      </div>
+      <h3 class="case-title">Turning Integration Chaos Into a Scalable System</h3>
+      <p class="case-subtitle">An API-first platform connecting lending institutions with insurance providers — where the core problem wasn't the product, it was the infrastructure holding it together.</p>
+
+      <div class="case-grid">
+        <div class="case-block">
+          <div class="case-block-label">The Problem</div>
+          <div class="case-block-text">Every insurance provider spoke a different technical language. Every partner integration was a custom project built from scratch. No standard. No repeatability. What looked like a platform from the outside was a collection of one-off builds held together by institutional memory.</div>
+        </div>
+        <div class="case-block">
+          <div class="case-block-label">The Thinking</div>
+          <div class="case-block-text">The instinct was to fix integrations one by one. Instead, treated it as an architecture problem with three distinct layers — how data enters the system, how it's processed through a white-label API, and how each provider connects through a standardised framework. Built the system, not the fix.</div>
+        </div>
+        <div class="case-block">
+          <div class="case-block-label">What Was Built</div>
+          <div class="case-block-text">Three-layer integration infrastructure standardising 60+ unique provider APIs into one repeatable framework. AIRe — an AI-powered recommendation engine. Fully simulated demo environment. Confluence knowledge ecosystem. MENA and Africa market expansion research translated into roadmap priorities.</div>
+        </div>
+        <div class="case-block">
+          <div class="case-block-label">The Outcome</div>
+          <div class="case-block-text">Platform scaled to 10+ lending partners, 25+ insurers, 120+ live integrations. Partner onboarding became a configuration exercise, not a development project. Support queries fell 25%. The platform reached profitability and closed funding rounds.</div>
+        </div>
+      </div>
+
+      <div class="case-metrics">
+        <div class="metric">
+          <div class="metric-value">$2M+</div>
+          <div class="metric-label">ARR</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value">120+</div>
+          <div class="metric-label">Integrations</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value">60%</div>
+          <div class="metric-label">Efficiency Gain</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value">20%</div>
+          <div class="metric-label">YoY Growth</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value">200K+</div>
+          <div class="metric-label">Users Enabled</div>
+        </div>
+      </div>
+
+      <div class="case-lesson">
+        <div class="case-lesson-label">What This Taught Me</div>
+        <div class="case-lesson-text">The hardest part of platform work is rarely the feature everyone can see. It's the layer underneath that decides whether the next ten features are cheap or expensive to build. The right question isn't "what should we build next" — it's "what would make everything we build next easier."</div>
+      </div>
+    </div>
+
+    <!-- CASE STUDY 2 — RETAIL PRO -->
+    <div class="case-study reveal">
+      <div class="case-meta">
+        <span class="case-tag">B2B2C</span>
+        <span class="case-category">Retail Insurance · Multi-Channel Distribution · Zero-to-One</span>
+      </div>
+      <h3 class="case-title">Building a Distribution Platform Across Every Channel and Category</h3>
+      <p class="case-subtitle">A full-stack retail insurance distribution platform — where the challenge wasn't building one journey, it was building a system that made every subsequent journey faster than the last.</p>
+
+      <div class="case-grid">
+        <div class="case-block">
+          <div class="case-block-label">The Problem</div>
+          <div class="case-block-text">A retail distribution platform needed to expand across multiple insurance categories and channels simultaneously — Health, Life, Motor, Commercial Vehicles, across DIY, Assisted, and POSP — without fragmenting into disconnected products. Each category had different regulatory requirements, different customer journeys, and different insurer APIs.</div>
+        </div>
+        <div class="case-block">
+          <div class="case-block-label">The Thinking</div>
+          <div class="case-block-text">The discipline wasn't launching more — it was launching in a way where the fifth category didn't cost five times as much as the first. Every capability built as a reusable system. White-label, configurable per partner. Each new category treated as a zero-to-one problem, not a template exercise.</div>
+        </div>
+        <div class="case-block">
+          <div class="case-block-label">What Was Built</div>
+          <div class="case-block-text">Term Life and Endowment E2E journeys — goal-based selling, risk profiling, suitability assessment, multi-insurer integrations. Commercial Vehicle insurance from scratch across a Rs.22,000Cr market. Product comparison framework, inspection orchestration, POSP commission ecosystem, DIY renewal journeys.</div>
+        </div>
+        <div class="case-block">
+          <div class="case-block-label">The Outcome</div>
+          <div class="case-block-text">3+ new monetisable product categories launched. 10% YoY revenue growth contribution. Distribution reach expanded across DIY, Assisted, and agent channels. All within a focused 8-9 month engagement — each capability built as a reusable platform asset.</div>
+        </div>
+      </div>
+
+      <div class="case-metrics">
+        <div class="metric">
+          <div class="metric-value">3+</div>
+          <div class="metric-label">New Categories</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value">10%</div>
+          <div class="metric-label">YoY Revenue</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value">₹22K Cr</div>
+          <div class="metric-label">Market Entered</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value">90%+</div>
+          <div class="metric-label">On-Time Delivery</div>
+        </div>
+      </div>
+
+      <div class="case-lesson">
+        <div class="case-lesson-label">What This Taught Me</div>
+        <div class="case-lesson-text">Breadth without structure becomes chaos. The real product decision isn't which category to launch — it's how to build the first one in a way that makes the second, third, and fourth ones structurally cheaper. That's the difference between a feature roadmap and a platform strategy.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THINKING -->
+<section id="thinking">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">03</span>
+      <h2 class="section-title">How I Think</h2>
+    </div>
+
+    <div class="principles-grid">
+      <div class="principle reveal">
+        <div class="principle-number">01</div>
+        <div class="principle-title">Systems over instances</div>
+        <div class="principle-body">Every feature request is a symptom. The real question is what system, if built correctly, would make this and the next ten requests unnecessary. Build the system, not the fix.</div>
+      </div>
+      <div class="principle reveal">
+        <div class="principle-number">02</div>
+        <div class="principle-title">Understand the ecosystem before touching the product</div>
+        <div class="principle-body">The product exists inside a business, which exists inside a market, which exists inside a regulatory and competitive environment. Missing any layer means building the wrong thing with confidence.</div>
+      </div>
+      <div class="principle reveal">
+        <div class="principle-number">03</div>
+        <div class="principle-title">The product is the GTM</div>
+        <div class="principle-body">In B2B and B2B2C, the best sales asset is a product that sells itself. Demo environments, onboarding flows, documentation — these aren't support functions. They're the go-to-market strategy.</div>
+      </div>
+      <div class="principle reveal">
+        <div class="principle-number">04</div>
+        <div class="principle-title">Data ends opinions</div>
+        <div class="principle-body">Strong opinions are the starting point, not the conclusion. The job is to design the question that data can actually answer — and then be willing to be wrong about the answer.</div>
+      </div>
+      <div class="principle reveal">
+        <div class="principle-number">05</div>
+        <div class="principle-title">Ownership means the layer beneath the feature</div>
+        <div class="principle-body">Anyone can ship a feature. Ownership means understanding what happens after it ships — the support queries, the edge cases, the partner confusion, the metric that didn't move. That's where the real product work is.</div>
+      </div>
+      <div class="principle reveal">
+        <div class="principle-number">06</div>
+        <div class="principle-title">Pattern recognition over precedent</div>
+        <div class="principle-body">Every business problem feels unique until you've seen the underlying pattern before. The most valuable thing experience builds isn't knowledge of solutions — it's the ability to recognise which problem you're actually solving.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WRITING -->
+<section id="writing">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">04</span>
+      <h2 class="section-title">Writing</h2>
+    </div>
+
+    <div class="writing-placeholder reveal">
+      <div class="writing-placeholder-title">Thinking in public — coming soon</div>
+      <div class="writing-placeholder-text">This section will carry genuine point-of-view essays on embedded insurance, platform product thinking, and what building in emerging markets actually teaches you. Not listicles. Real thinking.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label" style="color:rgba(255,255,255,0.4)">05</span>
+      <h2 class="section-title">Let's Talk</h2>
+    </div>
+
+    <p class="contact-line">I'm exploring global opportunities where platform ownership, technical depth, and genuine product thinking drive real outcomes.</p>
+
+    <div class="contact-links">
+      <a href="mailto:niteshrai00067@gmail.com" class="contact-link primary">niteshrai00067@gmail.com</a>
+      <a href="https://linkedin.com/in/rainitesh0" target="_blank" class="contact-link">LinkedIn</a>
+    </div>
+
+    <div class="open-to">
+      Open to: Remote globally · Singapore · Dubai · London · Amsterdam · Brussels · Relocation for the right opportunity
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-text">Nitesh Rai — Product Manager</span>
+  <span class="footer-text">Built with intent. Updated as the work evolves.</span>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  reveals.forEach(el => observer.observe(el));
+
+  // Tile smooth scroll
+  document.querySelectorAll('.tile[href^="#"]').forEach(tile => {
+    tile.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector(tile.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>
